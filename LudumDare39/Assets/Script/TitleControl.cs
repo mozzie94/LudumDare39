@@ -19,7 +19,9 @@ public class TitleControl : MonoBehaviour
 
     public void ButtonPlay()
     {
+		Debug.Log ("Pressed");
 		animatorStart.Play ("startGame");
+		StartCoroutine ("EnteringGameDelay");
         //StartGame();
     }
 
@@ -30,6 +32,12 @@ public class TitleControl : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("game");
+		
     }
+
+	IEnumerator EnteringGameDelay ()
+	{
+		yield return new WaitForSeconds (7);
+		SceneManager.LoadScene("game");
+	}
 }
