@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameControl : MonoBehaviour
     public Vector2 playerBounds = Vector2.one * 6f;
     public ParticleSystem particleSystemPlayer;
 
+    public Animator animatorResult;
 
     public float energyCurrent = 1f;
     public float energyDecreaseRate = 0.01f;
@@ -25,7 +27,7 @@ public class GameControl : MonoBehaviour
     public float stageMoveSpeedMaximumIncreaseRate = 0.02f;
     public float stageMoveSpeedMaximumMaximum = 10f;
     public float stageDistanceMoved = 0f;
-    public Text textDistance;
+    public Text[] textDistance;
 
     public float interactableEnergyColRadius = 1f;
     public float interactableObstacleSmallColRadius = 1f;
@@ -49,6 +51,7 @@ public class GameControl : MonoBehaviour
 
     void Start()
     {
+        animatorResult.gameObject.SetActive(false);
         arrayInteractableSpawner = FindObjectsOfType<GameInteractableSpawner>();
 
         if (particleSystemPlayer != null)
@@ -87,7 +90,10 @@ public class GameControl : MonoBehaviour
             objectPlayer.transform.localPosition = playerPos;
 
             stageDistanceMoved += stageMoveSpeedCurrent * Time.deltaTime;
-            textDistance.text = stageDistanceMoved.ToString("f1") + " m";
+            foreach (Text x in textDistance)
+            {
+                x.text = stageDistanceMoved.ToString("f1") + " m";
+            }
 
             if (stageMoveSpeedCurrent > stageMoveSpeedMaximum - 0.001f)
             {
@@ -118,6 +124,7 @@ public class GameControl : MonoBehaviour
             isGameOver = true;
             Debug.Log("GAME OVER!!!");
             imageEnergyGauge.fillAmount = 0f;
+            animatorResult.gameObject.SetActive(true);
 
             if (particleSystemPlayer != null)
             {
@@ -183,5 +190,14 @@ public class GameControl : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ReturnToTitle()
+    {
+        SceneManager.LoadScene("title");
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("game");
     }
 }
