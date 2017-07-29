@@ -7,9 +7,11 @@ public class GameInteractable : MonoBehaviour
     public enum InteractableType
     {
         EnergyRestore,
-        ObstacleSmall
+        ObstacleSmall,
+        ObstacleLarge
     }
 
     public InteractableType mInteractableType = InteractableType.EnergyRestore;
+    public Vector3 movePoint = Vector3.zero;
     public bool isInteracted = false;
 }

@@ -11,6 +11,8 @@ public class GameControl : MonoBehaviour
     private CircleCollider2D colliderPlayer;
     public float playerMoveSpeed = 5f;
     public Vector2 playerBounds = Vector2.one * 6f;
+    public ParticleSystem particleSystemPlayer;
+
 
     public float energyCurrent = 1f;
     public float energyDecreaseRate = 0.01f;
@@ -23,10 +25,17 @@ public class GameControl : MonoBehaviour
     public float stageMoveSpeedMaximumIncreaseRate = 0.02f;
     public float stageMoveSpeedMaximumMaximum = 10f;
     public float stageDistanceMoved = 0f;
+    public Text textDistance;
 
     public float interactableEnergyColRadius = 1f;
     public float interactableObstacleSmallColRadius = 1f;
     public float interactableObstacleSmallEnergyDecrease = 0.05f;
+    public float interactableObstacleLargeColRadius = 2f;
+    public float interactableObstacleLargeEnergyDecrease = 0.05f;
+
+    public float invincibilityPeriodCurrent = 0f;
+    public float invincibilityPeriodOnHitObstacleSmall = 0.5f;
+    public float invincibilityPeriodOnHitObstacleLarge = 2f;
 
     [HideInInspector] public bool isGameOver = false;
 
@@ -41,6 +50,11 @@ public class GameControl : MonoBehaviour
     void Start()
     {
         arrayInteractableSpawner = FindObjectsOfType<GameInteractableSpawner>();
+
+        if (particleSystemPlayer != null)
+        {
+            particleSystemPlayer.Play();
+        }
     }
 
     void Update()
@@ -73,6 +87,7 @@ public class GameControl : MonoBehaviour
             objectPlayer.transform.localPosition = playerPos;
 
             stageDistanceMoved += stageMoveSpeedCurrent * Time.deltaTime;
+            textDistance.text = stageDistanceMoved.ToString("f1") + " m";
 
             if (stageMoveSpeedCurrent > stageMoveSpeedMaximum - 0.001f)
             {
@@ -82,6 +97,20 @@ public class GameControl : MonoBehaviour
                     stageMoveSpeedMaximum = stageMoveSpeedMaximumMaximum;
                 }
             }
+
+            if (energyCurrent < 0.0001f && particleSystemPlayer.isPlaying)
+            {
+                particleSystemPlayer.Stop();
+            }
+            else if (energyCurrent > 0.0001f && !particleSystemPlayer.isPlaying)
+            {
+                particleSystemPlayer.Play();
+            }
+
+            if (particleSystemPlayer != null)
+            {
+                particleSystemPlayer.playbackSpeed = 1f * stageMoveSpeedCurrent / stageMoveSpeedMaximum;
+            }
         }
         // Otherwise, end the game.
         else if (!isGameOver)
@@ -89,12 +118,18 @@ public class GameControl : MonoBehaviour
             isGameOver = true;
             Debug.Log("GAME OVER!!!");
             imageEnergyGauge.fillAmount = 0f;
+
+            if (particleSystemPlayer != null)
+            {
+                particleSystemPlayer.Stop();
+            }
             return;
         }
 
         // Energy decreasing.
         energyCurrent = Mathf.Clamp01(energyCurrent - (energyDecreaseRate * Time.deltaTime));
         imageEnergyGauge.fillAmount = energyCurrent;
+        invincibilityPeriodCurrent -= Time.deltaTime;
     }
 
     void LateUpdate()
@@ -120,11 +155,25 @@ public class GameControl : MonoBehaviour
                     case GameInteractable.InteractableType.ObstacleSmall:
                         if (dist < interactableObstacleSmallColRadius)
                         {
-                            if (!y.isInteracted)
+                            if (!y.isInteracted && invincibilityPeriodCurrent <= 0f)
+                            {
+                                y.isInteracted = true;
+                                stageMoveSpeedCurrent *= 0.5f;
+                                energyCurrent -= interactableObstacleSmallEnergyDecrease;
+                                invincibilityPeriodCurrent = invincibilityPeriodOnHitObstacleSmall;
+                            }
+                        }
+                        break;
+                    // Large obstacle
+                    case GameInteractable.InteractableType.ObstacleLarge:
+                        if (dist < interactableObstacleLargeColRadius)
+                        {
+                            if (!y.isInteracted && invincibilityPeriodCurrent <= 0f)
                             {
                                 y.isInteracted = true;
                                 stageMoveSpeedCurrent = 0f;
-                                energyCurrent -= interactableObstacleSmallEnergyDecrease;
+                                energyCurrent -= interactableObstacleLargeEnergyDecrease;
+                                invincibilityPeriodCurrent = invincibilityPeriodOnHitObstacleLarge;
                             }
                         }
                         break;

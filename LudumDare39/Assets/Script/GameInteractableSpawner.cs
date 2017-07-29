@@ -59,7 +59,8 @@ public class GameInteractableSpawner : MonoBehaviour
                 continue;
             }
 
-            listInteractable[i].transform.position += Vector3.down * GameControl.control.stageMoveSpeedCurrent * Time.deltaTime;
+            listInteractable[i].transform.position +=
+                (Vector3.down * GameControl.control.stageMoveSpeedCurrent + listInteractable[i].movePoint) * Time.deltaTime;
         }
 
         // Destroying objects far below play field or is already destroyed
