@@ -1008,7 +1008,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: {x: 2.0359612, y: 2.0359614, z: 2.0359614}
+        value: {x: 2.5, y: 2.5, z: 2.0359614}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -1413,7 +1413,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 2882
+        value: 2993
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2147,7 +2147,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -31.2
+        value: 366
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2163,7 +2163,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 138
+        value: 217
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2243,6 +2243,56 @@ AnimationClip:
     attribute: m_AnchoredPosition.z
     path: ReSize (Camera)/CharacterAnimated/CharBigBody/CharBigEyeWhite/VFX
     classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.8
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 4
+        value: 0.8
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 4.0833335
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Volume
+    path: ReSize (Camera)/Sound
+    classID: 82
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      - serializedVersion: 2
+        time: 4.0833335
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: ReSize (Camera)/Sound
+    classID: 82
     script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -2453,6 +2503,20 @@ AnimationClip:
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 293564762
+      attribute: 4104493590
+      script: {fileID: 0}
+      typeID: 82
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 293564762
+      attribute: 3305885265
+      script: {fileID: 0}
+      typeID: 82
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
@@ -3147,7 +3211,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 2882
+        value: 2993
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -6557,7 +6621,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 2.0359612
+        value: 2.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -6573,7 +6637,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 2.0359614
+        value: 2.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -6605,7 +6669,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -31.2
+        value: 366
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -6621,7 +6685,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 138
+        value: 217
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -7175,6 +7239,56 @@ AnimationClip:
     attribute: m_LocalScale.z
     path: ReSize (Camera)/CharacterAnimated/CharBigBody/CharBigEyeWhite/VFX
     classID: 224
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.8
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 4
+        value: 0.8
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 4.0833335
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Volume
+    path: ReSize (Camera)/Sound
+    classID: 82
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      - serializedVersion: 2
+        time: 4.0833335
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: ReSize (Camera)/Sound
+    classID: 82
     script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
