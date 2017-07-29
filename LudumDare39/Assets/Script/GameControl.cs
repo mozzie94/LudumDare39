@@ -14,6 +14,8 @@ public class GameControl : MonoBehaviour
     public Vector2 playerBounds = Vector2.one * 6f;
     public ParticleSystem particleSystemPlayer;
 
+    public GameObject objectHelp;
+    public GameObject objectPause;
     public Animator animatorResult;
 
     public float energyCurrent = 1f;
@@ -40,6 +42,8 @@ public class GameControl : MonoBehaviour
     public float invincibilityPeriodOnHitObstacleLarge = 2f;
 
     [HideInInspector] public bool isGameOver = false;
+    private bool isPaused = false;
+    private float pauseCooldown = 0f;
 
     private GameInteractableSpawner[] arrayInteractableSpawner;
 
@@ -52,7 +56,10 @@ public class GameControl : MonoBehaviour
     void Start()
     {
         animatorResult.gameObject.SetActive(false);
+        objectPause.SetActive(false);
         arrayInteractableSpawner = FindObjectsOfType<GameInteractableSpawner>();
+
+        stageMoveSpeedCurrent = stageMoveSpeedMaximum * 0.5f;
 
         if (particleSystemPlayer != null)
         {
@@ -68,6 +75,23 @@ public class GameControl : MonoBehaviour
             return;
         }
 
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape)) && pauseCooldown < 0f)
+        {
+            isPaused = !isPaused;
+
+            objectPause.SetActive(isPaused);
+            if (isPaused)
+            {
+                Time.timeScale = 0f;
+                pauseCooldown = 0.5f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                pauseCooldown = 3f;
+            }
+        }
+
         // Increase speed if player has energy. Otherwise, decrease it.
         if (energyCurrent > 0f)
         {
@@ -81,8 +105,8 @@ public class GameControl : MonoBehaviour
         // As long as player has energy or speed, player can move.
         if (energyCurrent > Mathf.Epsilon || stageMoveSpeedCurrent > Mathf.Epsilon)
         {
-            float moveX = Input.GetAxisRaw("Horizontal") * playerMoveSpeed * stageMoveSpeedCurrent / stageMoveSpeedMaximum;
-            float moveY = Input.GetAxisRaw("Vertical") * playerMoveSpeed * stageMoveSpeedCurrent / stageMoveSpeedMaximum;
+            float moveX = Input.GetAxisRaw("Horizontal") * playerMoveSpeed * stageMoveSpeedCurrent / stageMoveSpeedMaximum * Time.deltaTime;
+            float moveY = Input.GetAxisRaw("Vertical") * playerMoveSpeed * stageMoveSpeedCurrent / stageMoveSpeedMaximum * Time.deltaTime;
 
             Vector3 playerPos = objectPlayer.transform.localPosition;
             playerPos.x = Mathf.Clamp(playerPos.x + moveX, -playerBounds.x, playerBounds.x);
@@ -90,6 +114,7 @@ public class GameControl : MonoBehaviour
             objectPlayer.transform.localPosition = playerPos;
 
             stageDistanceMoved += stageMoveSpeedCurrent * Time.deltaTime;
+            objectHelp.SetActive(stageDistanceMoved < 100f);
             foreach (Text x in textDistance)
             {
                 x.text = stageDistanceMoved.ToString("f1") + " m";
@@ -124,6 +149,7 @@ public class GameControl : MonoBehaviour
             isGameOver = true;
             Debug.Log("GAME OVER!!!");
             imageEnergyGauge.fillAmount = 0f;
+            objectHelp.SetActive(false);
             animatorResult.gameObject.SetActive(true);
 
             if (particleSystemPlayer != null)
@@ -137,6 +163,7 @@ public class GameControl : MonoBehaviour
         energyCurrent = Mathf.Clamp01(energyCurrent - (energyDecreaseRate * Time.deltaTime));
         imageEnergyGauge.fillAmount = energyCurrent;
         invincibilityPeriodCurrent -= Time.deltaTime;
+        pauseCooldown -= Time.unscaledDeltaTime;
     }
 
     void LateUpdate()
