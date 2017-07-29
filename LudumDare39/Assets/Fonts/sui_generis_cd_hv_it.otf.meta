@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: ffef77dc690677e40be07477db42b953
+timeCreated: 1501339671
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Sui Generis
+  fontNames:
+  - Sui Generis
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

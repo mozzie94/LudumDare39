@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TitleControl : MonoBehaviour
 {
+	public Animator animatorStart;
+
 	void Start ()
     {
 		
@@ -17,7 +19,8 @@ public class TitleControl : MonoBehaviour
 
     public void ButtonPlay()
     {
-        StartGame();
+		animatorStart.Play ("startGame");
+        //StartGame();
     }
 
     public void ButtonExit()
