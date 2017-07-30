@@ -221,7 +221,7 @@ public class GameControl : MonoBehaviour
 
     public void ReturnToTitle()
     {
-        SceneManager.LoadScene("title");
+        SceneManager.LoadScene("Title_Screen");
     }
     public void RestartGame()
     {
