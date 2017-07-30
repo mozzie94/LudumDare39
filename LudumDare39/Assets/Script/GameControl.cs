@@ -174,6 +174,7 @@ public class GameControl : MonoBehaviour
             //imageEnergyGauge.fillAmount = 0f;
             objectHelp.SetActive(false);
             animatorResult.gameObject.SetActive(true);
+			audioSourceMusic.Stop ();
 
             if (particleSystemPlayer != null)
             {
