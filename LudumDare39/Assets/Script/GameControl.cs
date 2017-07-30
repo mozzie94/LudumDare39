@@ -44,6 +44,7 @@ public class GameControl : MonoBehaviour
     public float invincibilityPeriodOnHitObstacleLarge = 2f;
 
     public GameObject[] objectDisableOnGameOver;
+    public ParticleSystem[] particleSystemStars;
 
     public AudioSource audioSourceSound;
     public AudioSource audioSourceMusic;
@@ -153,6 +154,11 @@ public class GameControl : MonoBehaviour
                 audioSourceMusic.pitch = 1f;
             }
 
+            foreach (ParticleSystem x in particleSystemStars)
+            {
+                x.playbackSpeed = 1f * stageMoveSpeedCurrent / stageMoveSpeedMaximum;
+            }
+
             /*
             if (particleSystemPlayer != null)
             {
@@ -172,6 +178,10 @@ public class GameControl : MonoBehaviour
             if (particleSystemPlayer != null)
             {
                 particleSystemPlayer.Stop();
+            }
+            foreach (ParticleSystem x in particleSystemStars)
+            {
+                x.Stop();
             }
             foreach (GameObject x in objectDisableOnGameOver)
             {
