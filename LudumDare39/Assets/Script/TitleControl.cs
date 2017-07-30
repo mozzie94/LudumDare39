@@ -48,7 +48,7 @@ public class TitleControl : MonoBehaviour
 
 	IEnumerator EnteringGameDelay ()
 	{
-		yield return new WaitForSeconds (5.3f);
+		yield return new WaitForSeconds (8.1f);
 		SceneManager.LoadScene("game");
 	}
 }

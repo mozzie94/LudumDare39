@@ -7963,9 +7963,12 @@ GameObject:
   - component: {fileID: 2059568542}
   - component: {fileID: 2059568543}
   - component: {fileID: 2059568544}
+  - component: {fileID: 2059568548}
+  - component: {fileID: 2059568547}
   - component: {fileID: 2059568540}
   - component: {fileID: 2059568541}
   - component: {fileID: 2059568545}
+  - component: {fileID: 2059568546}
   m_Layer: 0
   m_Name: Spawners
   m_TagString: Untagged
@@ -8151,7 +8154,7 @@ MonoBehaviour:
   interactablePrefab: {fileID: 114416871779309538, guid: e47315ce2e7f86c4bab2806dd66eac9d,
     type: 2}
   interactableSpawnDelayInitial: 55
-  interactableSpawnDelayAdjustment: -2.6
+  interactableSpawnDelayAdjustment: -3.6
   interactableSpawnDelayMinimum: 1.67
   interactableSpawnDelayMaximum: 999999
 --- !u!114 &2059568544
@@ -8175,7 +8178,7 @@ MonoBehaviour:
   interactablePrefab: {fileID: 114416871779309538, guid: b5acc61a862d51f4a86a1ac52ded4e0d,
     type: 2}
   interactableSpawnDelayInitial: 90
-  interactableSpawnDelayAdjustment: -4.8
+  interactableSpawnDelayAdjustment: -8
   interactableSpawnDelayMinimum: 1.85
   interactableSpawnDelayMaximum: 999999
 --- !u!114 &2059568545
@@ -8201,6 +8204,78 @@ MonoBehaviour:
   interactableSpawnDelayInitial: 79
   interactableSpawnDelayAdjustment: -12.41
   interactableSpawnDelayMinimum: 4.9
+  interactableSpawnDelayMaximum: 999999
+--- !u!114 &2059568546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2059568535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b40969fb68fc34d91754bcf1b1fcb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listInteractable: []
+  rectInteractableSpawnPos:
+    serializedVersion: 2
+    x: 0
+    y: 11
+    width: 10
+    height: 5
+  interactablePrefab: {fileID: 114416871779309538, guid: ccd6e6fe23b960740a4c204f2baa1301,
+    type: 2}
+  interactableSpawnDelayInitial: 140
+  interactableSpawnDelayAdjustment: -41
+  interactableSpawnDelayMinimum: 4.45
+  interactableSpawnDelayMaximum: 999999
+--- !u!114 &2059568547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2059568535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b40969fb68fc34d91754bcf1b1fcb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listInteractable: []
+  rectInteractableSpawnPos:
+    serializedVersion: 2
+    x: 0
+    y: 9
+    width: 10
+    height: 4
+  interactablePrefab: {fileID: 114416871779309538, guid: e47315ce2e7f86c4bab2806dd66eac9d,
+    type: 2}
+  interactableSpawnDelayInitial: 160
+  interactableSpawnDelayAdjustment: -24
+  interactableSpawnDelayMinimum: 2.2
+  interactableSpawnDelayMaximum: 999999
+--- !u!114 &2059568548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2059568535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b40969fb68fc34d91754bcf1b1fcb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listInteractable: []
+  rectInteractableSpawnPos:
+    serializedVersion: 2
+    x: 0
+    y: 9
+    width: 10
+    height: 4
+  interactablePrefab: {fileID: 114416871779309538, guid: e47315ce2e7f86c4bab2806dd66eac9d,
+    type: 2}
+  interactableSpawnDelayInitial: 120
+  interactableSpawnDelayAdjustment: -12
+  interactableSpawnDelayMinimum: 2.06
   interactableSpawnDelayMaximum: 999999
 --- !u!1 &2081451646
 GameObject:
