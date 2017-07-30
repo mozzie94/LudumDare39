@@ -871,6 +871,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 214992777}
+--- !u!198 &227562509 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198587482990964520, guid: 6ecc3b946691f19499cd1e75855f3144,
+    type: 2}
+  m_PrefabInternal: {fileID: 1090410627}
 --- !u!1 &237336247
 GameObject:
   m_ObjectHideFlags: 0
@@ -4157,6 +4162,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 250891442}
+--- !u!198 &271881788 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198354741942530208, guid: 6ecc3b946691f19499cd1e75855f3144,
+    type: 2}
+  m_PrefabInternal: {fileID: 1090410627}
 --- !u!1 &289303801
 GameObject:
   m_ObjectHideFlags: 0
@@ -4769,6 +4779,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 441184514}
+--- !u!198 &508175836 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198428912400518678, guid: 6ecc3b946691f19499cd1e75855f3144,
+    type: 2}
+  m_PrefabInternal: {fileID: 1090410627}
 --- !u!1 &516629295
 GameObject:
   m_ObjectHideFlags: 0
@@ -5879,6 +5894,53 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+--- !u!1001 &1090410627
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4153737830328030, guid: 6ecc3b946691f19499cd1e75855f3144, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -10.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153737830328030, guid: 6ecc3b946691f19499cd1e75855f3144, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153737830328030, guid: 6ecc3b946691f19499cd1e75855f3144, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153737830328030, guid: 6ecc3b946691f19499cd1e75855f3144, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153737830328030, guid: 6ecc3b946691f19499cd1e75855f3144, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153737830328030, guid: 6ecc3b946691f19499cd1e75855f3144, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153737830328030, guid: 6ecc3b946691f19499cd1e75855f3144, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153737830328030, guid: 6ecc3b946691f19499cd1e75855f3144, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 95869094728871072, guid: 6ecc3b946691f19499cd1e75855f3144,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6ecc3b946691f19499cd1e75855f3144, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1099585469
 GameObject:
   m_ObjectHideFlags: 0
@@ -6121,6 +6183,11 @@ MonoBehaviour:
   - {fileID: 166324389}
   - {fileID: 2113793458}
   - {fileID: 859868965}
+  particleSystemStars:
+  - {fileID: 1956392425}
+  - {fileID: 271881788}
+  - {fileID: 508175836}
+  - {fileID: 227562509}
   audioSourceSound: {fileID: 1120160253}
   audioSourceMusic: {fileID: 1110992722}
   clipDrink: {fileID: 8300000, guid: 41ccaab2dbd95904a99eb662eb7b8c60, type: 3}
@@ -6838,8 +6905,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.19961053, y: 51.171936}
-  m_SizeDelta: {x: 25, y: 325}
+  m_AnchoredPosition: {x: -0.199566, y: 60.171936}
+  m_SizeDelta: {x: 25, y: 316}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1299270781
 MonoBehaviour:
@@ -7720,6 +7787,11 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+--- !u!198 &1956392425 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198551907123046088, guid: 6ecc3b946691f19499cd1e75855f3144,
+    type: 2}
+  m_PrefabInternal: {fileID: 1090410627}
 --- !u!1 &1999565179
 GameObject:
   m_ObjectHideFlags: 0
@@ -7856,7 +7928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2057034742
 Transform:
   m_ObjectHideFlags: 0

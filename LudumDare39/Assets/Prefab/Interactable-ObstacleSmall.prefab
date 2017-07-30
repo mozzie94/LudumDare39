@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mInteractableType: 1
   movePoint: {x: 0, y: 0, z: 0}
+  isRotatingRandomly: 1
   isInteracted: 0
 --- !u!212 &212195881848957178
 SpriteRenderer:
