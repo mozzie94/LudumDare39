@@ -9,6 +9,7 @@ public class GameControl : MonoBehaviour
     public static GameControl control;
 
     public GameObject objectPlayer;
+    public Animator animatorPlayer;
     private CircleCollider2D colliderPlayer;
     public float playerMoveSpeed = 5f;
     public Vector2 playerBounds = Vector2.one * 6f;
@@ -21,7 +22,8 @@ public class GameControl : MonoBehaviour
     public float energyCurrent = 1f;
     public float energyDecreaseRate = 0.01f;
     public float energyRecoverOnItemPickup = 0.4f;
-    public Image imageEnergyGauge;
+    public RectTransform imageEnergyGauge;
+    private Vector2 sizeEnergyGaugeHeight;
 
     public float stageMoveSpeedCurrent = 0f;
     public float stageMoveSpeedAcceleration = 2.5f;
@@ -41,6 +43,13 @@ public class GameControl : MonoBehaviour
     public float invincibilityPeriodOnHitObstacleSmall = 0.5f;
     public float invincibilityPeriodOnHitObstacleLarge = 2f;
 
+    public GameObject[] objectDisableOnGameOver;
+
+    public AudioSource audioSourceSound;
+    public AudioSource audioSourceMusic;
+    public AudioClip clipDrink;
+    public AudioClip clipHit;
+
     [HideInInspector] public bool isGameOver = false;
     private bool isPaused = false;
     private float pauseCooldown = 0f;
@@ -59,6 +68,7 @@ public class GameControl : MonoBehaviour
         objectPause.SetActive(false);
         arrayInteractableSpawner = FindObjectsOfType<GameInteractableSpawner>();
 
+        sizeEnergyGaugeHeight = imageEnergyGauge.sizeDelta;
         stageMoveSpeedCurrent = stageMoveSpeedMaximum * 0.5f;
 
         if (particleSystemPlayer != null)
@@ -129,26 +139,33 @@ public class GameControl : MonoBehaviour
                 }
             }
 
-            if (energyCurrent < 0.0001f && particleSystemPlayer.isPlaying)
+            if (energyCurrent < 0.0001f)
             {
-                particleSystemPlayer.Stop();
+                audioSourceMusic.pitch = stageMoveSpeedCurrent / stageMoveSpeedMaximum;
+                if (particleSystemPlayer.isPlaying)
+                {
+                    particleSystemPlayer.Stop();
+                }
             }
             else if (energyCurrent > 0.0001f && !particleSystemPlayer.isPlaying)
             {
                 particleSystemPlayer.Play();
+                audioSourceMusic.pitch = 1f;
             }
 
+            /*
             if (particleSystemPlayer != null)
             {
                 particleSystemPlayer.playbackSpeed = 1f * stageMoveSpeedCurrent / stageMoveSpeedMaximum;
             }
+            */
         }
         // Otherwise, end the game.
         else if (!isGameOver)
         {
             isGameOver = true;
             Debug.Log("GAME OVER!!!");
-            imageEnergyGauge.fillAmount = 0f;
+            //imageEnergyGauge.fillAmount = 0f;
             objectHelp.SetActive(false);
             animatorResult.gameObject.SetActive(true);
 
@@ -156,12 +173,19 @@ public class GameControl : MonoBehaviour
             {
                 particleSystemPlayer.Stop();
             }
+            foreach (GameObject x in objectDisableOnGameOver)
+            {
+                x.SetActive(false);
+            }
             return;
         }
 
         // Energy decreasing.
         energyCurrent = Mathf.Clamp01(energyCurrent - (energyDecreaseRate * Time.deltaTime));
-        imageEnergyGauge.fillAmount = energyCurrent;
+        //imageEnergyGauge.fillAmount = energyCurrent;
+        Vector2 gaugeDisplay = sizeEnergyGaugeHeight;
+        gaugeDisplay.y *= energyCurrent;
+        imageEnergyGauge.sizeDelta = gaugeDisplay;
         invincibilityPeriodCurrent -= Time.deltaTime;
         pauseCooldown -= Time.unscaledDeltaTime;
     }
@@ -183,6 +207,8 @@ public class GameControl : MonoBehaviour
                         {
                             Destroy(y.gameObject);
                             energyCurrent = Mathf.Clamp01(energyCurrent + energyRecoverOnItemPickup);
+                            animatorPlayer.Play("PlayerBanged");
+                            audioSourceSound.PlayOneShot(clipDrink);
                         }
                         break;
                     // Small obstacle
@@ -195,6 +221,8 @@ public class GameControl : MonoBehaviour
                                 stageMoveSpeedCurrent *= 0.5f;
                                 energyCurrent -= interactableObstacleSmallEnergyDecrease;
                                 invincibilityPeriodCurrent = invincibilityPeriodOnHitObstacleSmall;
+                                animatorPlayer.Play("PlayerBanged");
+                                audioSourceSound.PlayOneShot(clipHit);
                             }
                         }
                         break;
@@ -208,6 +236,8 @@ public class GameControl : MonoBehaviour
                                 stageMoveSpeedCurrent = 0f;
                                 energyCurrent -= interactableObstacleLargeEnergyDecrease;
                                 invincibilityPeriodCurrent = invincibilityPeriodOnHitObstacleLarge;
+                                animatorPlayer.Play("PlayerBanged");
+                                audioSourceSound.PlayOneShot(clipHit);
                             }
                         }
                         break;

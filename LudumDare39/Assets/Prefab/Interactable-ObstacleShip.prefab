@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212195881848957178}
   - component: {fileID: 114416871779309538}
   m_Layer: 0
-  m_Name: Interactable-Obstacle3
+  m_Name: Interactable-ObstacleShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mInteractableType: 2
-  movePoint: {x: 0, y: 0, z: 0}
+  movePoint: {x: 4, y: 0, z: 0}
   isInteracted: 0
 --- !u!212 &212195881848957178
 SpriteRenderer:
@@ -86,8 +86,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 76a552c3f0d0956448004ed06d2259ea, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: 3be0f827eb34d57459fa9ce367a343c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

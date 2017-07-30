@@ -11,6 +11,8 @@ public class TitleControl : MonoBehaviour
 	public GameObject button1;
 	public GameObject button2;
 
+    public AudioSource audioSourceMusic;
+
 	void Start ()
     {
 		
@@ -29,6 +31,7 @@ public class TitleControl : MonoBehaviour
 		text.SetActive(false);
 		button1.SetActive(false);
 		button2.SetActive(false);
+        audioSourceMusic.Stop();
 		StartCoroutine ("EnteringGameDelay");
         //StartGame();
     }
