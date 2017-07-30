@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class TitleControl : MonoBehaviour
 {
 	public Animator animatorStart;
+	public GameObject drinkingAnimation;
+	public GameObject text;
+	public GameObject button1;
+	public GameObject button2;
 
 	void Start ()
     {
@@ -20,7 +24,11 @@ public class TitleControl : MonoBehaviour
     public void ButtonPlay()
     {
 		Debug.Log ("Pressed");
-		animatorStart.Play ("startGame");
+		//animatorStart.Play ("startGame");
+		drinkingAnimation.SetActive(true);
+		text.SetActive(false);
+		button1.SetActive(false);
+		button2.SetActive(false);
 		StartCoroutine ("EnteringGameDelay");
         //StartGame();
     }
